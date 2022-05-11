@@ -1,6 +1,11 @@
 import { Container, Content } from "./styles";
 
-export function Header() {
+interface HeaderProps {
+    setUserProfile: (userProfile: string) => void 
+}
+
+export function Header({ setUserProfile }:HeaderProps) {
+
     return (
         <>
             <Container>
@@ -11,6 +16,7 @@ export function Header() {
                     <input 
                         type="text" 
                         placeholder="Your GitHub Profile"
+                        onChange={user => setUserProfile(user.target.value)}
                     />
                 </Content>
             </Container>
