@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { RepositoryItem } from "../RepositoryItem";
 import { Container } from "./styles";
+import Toastify from 'toastify-js'
+import "toastify-js/src/toastify.css"
 
 interface RepositoryList {
     userProfile: string
@@ -33,8 +35,19 @@ export function RepositoryList({ userProfile }:RepositoryList) {
         })
         .then(data => setRepositories(data))
         .catch(() => {
-            alert('Nenhum repositório encontrado')
-            
+            Toastify({
+                text: "Nenhum repositório encontrado",
+                duration: 3000,
+                newWindow: true,
+                close: true,
+                gravity: "top", // `top` or `bottom`
+                position: "right", // `left`, `center` or `right`
+                stopOnFocus: true, // Prevents dismissing of toast on hover
+                style: {
+                  background: "linear-gradient(to right, #00b09b, #96c93d)",
+                },
+                onClick: function(){} // Callback after click
+              }).showToast();
         })
     }
 
