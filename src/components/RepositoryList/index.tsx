@@ -15,15 +15,27 @@ interface RepositoryItemProps {
 export function RepositoryList({ userProfile }:RepositoryList) {
 
     const [repositories,setRepositories] = useState<RepositoryItemProps[]>([])
+    const [URL,setURL] = useState(``) 
 
     useEffect( () => {
         setRepositories([])
+        setURL(`https://api.github.com/users/${userProfile}/repos`)
     }, [userProfile])
 
     function handleFetchApi() {
-        fetch(`https://api.github.com/users/${userProfile}/repos`)
-        .then(response => response.json())
+        fetch(URL)
+        .then(response => {
+            if(response.status == 404){
+                throw new Error('Something went wrong');
+            }else {
+                return response.json()
+            }
+        })
         .then(data => setRepositories(data))
+        .catch(() => {
+            alert('Nenhum repositório encontrado')
+            
+        })
     }
 
     return (
