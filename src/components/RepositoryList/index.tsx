@@ -36,17 +36,17 @@ export function RepositoryList({ userProfile }:RepositoryList) {
         .then(data => setRepositories(data))
         .catch(() => {
             Toastify({
-                text: "Nenhum repositório encontrado",
+                text: "No repositories found",
                 duration: 3000,
                 newWindow: true,
                 close: true,
-                gravity: "top", // `top` or `bottom`
-                position: "right", // `left`, `center` or `right`
-                stopOnFocus: true, // Prevents dismissing of toast on hover
+                gravity: "top",
+                position: "right",
+                stopOnFocus: true,
                 style: {
-                  background: "linear-gradient(to right, #00b09b, #96c93d)",
+                  background: "linear-gradient(to right, #ff7979, #bd4242)",
                 },
-                onClick: function(){} // Callback after click
+                onClick: function(){}
               }).showToast();
         })
     }
