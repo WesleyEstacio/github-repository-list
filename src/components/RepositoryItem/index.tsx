@@ -4,7 +4,7 @@ interface RepositoryItemProps {
     repository: {
         name: string,
         description: string,
-        link: string
+        html_url: string
     }
 }
 
@@ -15,7 +15,7 @@ export function RepositoryItem({ repository }:RepositoryItemProps) {
                     <strong>{repository.name}</strong>
                     <p>{repository.description}</p>
                     <a 
-                        href={repository.link}
+                        href={repository.html_url}
                         target="_blank"
                     >
                         Access the repositorio

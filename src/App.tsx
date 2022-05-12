@@ -5,8 +5,7 @@ import { GlobalStyle } from "./styles/Global";
 
 export function App() {
 
-  const [userProfile,setUserProfile] = useState('')
-  console.log(userProfile)
+  const [userProfile,setUserProfile] = useState('wesleyestacio')
 
   return (
     <>
